@@ -8,7 +8,7 @@ services:
                 privileged: true
         image: 'sail-8.4/app'
         privileged: true
-        command: /bin/bash
+        entrypoint: /sbin/init
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -20,7 +20,6 @@ services:
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
-            privileged: true
         volumes:
             - '.:/var/www/html'
         networks:
